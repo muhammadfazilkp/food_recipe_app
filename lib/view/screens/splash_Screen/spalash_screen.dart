@@ -36,7 +36,7 @@ class SplashScreen extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const HomeScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>  HomeScreen()));
                     },
                     style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(

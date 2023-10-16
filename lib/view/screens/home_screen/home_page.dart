@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe_app/core/text_style.dart';
+import 'package:food_recipe_app/view/screens/home_screen/widget/categori.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+   HomeScreen({super.key});
+   final List<String> categories = ["Breakfast", "Lunch", "Dinner", "Snacks", "Dessert", "Drinks", "Vegetarian"];
 
   @override
   Widget build(BuildContext context) {
@@ -36,31 +38,11 @@ class HomeScreen extends StatelessWidget {
                     style: text,
                   )),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      height: 35,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Center(
-                          child: Text(
-                        'Breakfast',
-                        style: categori,
-                      )),
-                    ),
-                  )
-                ],
-              ),
-            )
+             CategoriWidget( categories: categories,)
           ],
         ),
       ),
     );
   }
 }
+
