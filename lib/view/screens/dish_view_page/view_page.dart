@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_recipe_app/core/text_style.dart';
 
 class DishViewPage extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const DishViewPage({Key? key});
 
   @override
@@ -13,7 +14,7 @@ class DishViewPage extends StatelessWidget {
         body: Column(
       children: [
         Stack(
-          children: [ 
+          children: [
             Stack(
               children: [
                 Container(
@@ -57,14 +58,10 @@ class DishViewPage extends StatelessWidget {
               height: 80,
               width: 80,
               decoration: BoxDecoration(
-                  color: const  Color.fromARGB(255, 206, 138, 153),
+                  color: const Color.fromARGB(255, 206, 138, 153),
                   borderRadius: BorderRadius.circular(10)),
               child: const Column(
-                children: [
-                  box,
-                  Icon( CupertinoIcons.time ),
-                  Text('40 Mins')
-                ],
+                children: [box, Icon(CupertinoIcons.time), Text('40 Mins')],
               ),
             ),
             boxw,
@@ -72,96 +69,105 @@ class DishViewPage extends StatelessWidget {
               height: 80,
               width: 90,
               decoration: BoxDecoration(
-                  color: const  Color.fromARGB(255, 128, 137, 201),
+                  color: const Color.fromARGB(255, 128, 137, 201),
                   borderRadius: BorderRadius.circular(10)),
               child: const Column(
-                children: [
-                  box,
-                  Icon(   CupertinoIcons.delete ),
-                  Text('Medium')
-                ],
+                children: [box, Icon(CupertinoIcons.delete), Text('Medium')],
               ),
             ),
             boxw,
-             Container(
+            Container(
               height: 80,
               width: 90,
               decoration: BoxDecoration(
-                  color: const  Color.fromARGB(255, 224, 223, 162),
+                  color: const Color.fromARGB(255, 224, 223, 162),
                   borderRadius: BorderRadius.circular(10)),
               child: const Column(
-                children: [
-                  box,
-                  Icon(  CupertinoIcons.flame    ),
-                  Text('420 cal')
-                ],
+                children: [box, Icon(CupertinoIcons.flame), Text('420 cal')],
               ),
             ),
-            
           ],
-          
-        )
-        ,
+        ),
         box,
         Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(15, 5, 0, 0),
-            child: Text('Ingredients',style: categori,),
-          )),
-          box,
-          Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(15, 5, 0, 0),
+              child: Text(
+                'Ingredients',
+                style: categori,
+              ),
+            )),
+        box,
+        Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Align(
               alignment: Alignment.centerLeft,
-              child: Text('. Hot Dog Buns',style: detail,)),
-          ),
-          box,
-           Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: Align(
+              child: Text(
+                '. Hot Dog Buns',
+                style: detail,
+              )),
+        ),
+        box,
+        Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Align(
               alignment: Alignment.centerLeft,
-              child: Text('. Hot Dog Buns',style: detail,)),
-          ),
-          box,
-             
-              Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: Align(
+              child: Text(
+                '. Hot Dog Buns',
+                style: detail,
+              )),
+        ),
+        box,
+        Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Align(
               alignment: Alignment.centerLeft,
-              child: Text('. Hot Dog Buns',style: detail,)),
-          ),
-            box,
-              Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: Align(
+              child: Text(
+                '. Hot Dog Buns',
+                style: detail,
+              )),
+        ),
+        box,
+        Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Align(
               alignment: Alignment.centerLeft,
-              child: Text('. Hot Dog Buns',style: detail,)),
-          ),
-          box,
-          Align(
+              child: Text(
+                '. Hot Dog Buns',
+                style: detail,
+              )),
+        ),
+        box,
+        Align(
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Text('Steps',style: text,),
-            )),
-            Padding(
-              padding: const EdgeInsets.all(7.0),
-              child: Column(
-                children: [
-                  Text('1) akasjdfkasjdfkasjdfkdsjfdjkfhdsjfhdhfjdhkjhjkvkjvbksjdvkjdkjfjkdkjfkjdshfkjdsh/nsdfhihisuhfdishishf',style: detail,),
-                   Text('2) akasjdfkasjdfkasjdfkdsjfdjkfhdsjfhdhfjdhkjhjkvkjvbksjdvkjdkjfjkdkjfkjdshfkjdsh/nsdfhihisuhfdishishf',style: detail,),
-                    Text('3) akasjdfkasjdfkasjdfkdsjfdjkfhdsjfhdhfjdhkjhjkvkjvbksjdvkjdkjfjkdkjfkjdshfkjdsh/nsdfhihisuhfdishishf',style: detail,),
-                ],
+              child: Text(
+                'Steps',
+                style: text,
               ),
-            )
-             
-              
-          
-          
+            )),
+        Padding(
+          padding: const EdgeInsets.all(7.0),
+          child: Column(
+            children: [
+              Text(
+                '1) akasjdfkasjdfkasjdfkdsjfdjkfhdsjfhdhfjdhkjhjkvkjvbksjdvkjdkjfjkdkjfkjdshfkjdsh/nsdfhihisuhfdishishf',
+                style: detail,
+              ),
+              Text(
+                '2) akasjdfkasjdfkasjdfkdsjfdjkfhdsjfhdhfjdhkjhjkvkjvbksjdvkjdkjfjkdkjfkjdshfkjdsh/nsdfhihisuhfdishishf',
+                style: detail,
+              ),
+              Text(
+                '3) akasjdfkasjdfkasjdfkdsjfdjkfhdsjfhdhfjdhkjhjkvkjvbksjdvkjdkjfjkdkjfkjdshfkjdsh/nsdfhihisuhfdishishf',
+                style: detail,
+              ),
+            ],
+          ),
+        )
       ],
-    
-    )
-    );
+    ));
   }
 }

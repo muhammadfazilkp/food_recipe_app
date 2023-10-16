@@ -10,7 +10,9 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(color: Colors.white),
+        decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/pizza-toppings-pile-composition_1284-26412.jpg'))
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
