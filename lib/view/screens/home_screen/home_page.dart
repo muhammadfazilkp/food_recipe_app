@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe_app/core/text_style.dart';
+import 'package:food_recipe_app/view/screens/dish_view_page/view_page.dart';
 import 'package:food_recipe_app/view/screens/home_screen/widget/categori.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -49,22 +50,57 @@ class HomeScreen extends StatelessWidget {
             CategoriWidget(
               categories: categories,
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            // const SizedBox(
+            //   height: 30,
+            // ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GridView(
-                  
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    
                       crossAxisCount: 2,
                       mainAxisSpacing: 10,
-                      crossAxisSpacing: 20
-                    ),
+                      crossAxisSpacing: 20),
                   scrollDirection: Axis.vertical,
                   children: [
+                    InkWell(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> const DishViewPage())),
+                      child: Card(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 110,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    'Tuna Tarate',
+                                    style: categori,
+                                  ),
+                                  Text(
+                                    '40 mins|4.2',
+                                    style: detail,
+                                  ),
+                                  Text(
+                                    'Medium',
+                                    style: detail,
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                     Card(
                       child: SingleChildScrollView(
                         child: Column(
@@ -94,50 +130,13 @@ class HomeScreen extends StatelessWidget {
                                 const SizedBox(
                                   height: 5,
                                 ),
-                               
                               ],
                             ),
                           ],
                         ),
                       ),
                     ),
-                     Card(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 110,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  'Tuna Tarate',
-                                  style: categori,
-                                ),
-                                Text(
-                                  '40 mins|4.2',
-                                  style: detail,
-                                ),
-                                Text(
-                                  'Medium',
-                                  style: detail,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                               
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                     Card(
+                    Card(
                       child: Column(
                         children: [
                           Container(
@@ -165,7 +164,6 @@ class HomeScreen extends StatelessWidget {
                               const SizedBox(
                                 height: 5,
                               ),
-                              
                             ],
                           ),
                         ],
@@ -174,9 +172,6 @@ class HomeScreen extends StatelessWidget {
                     // Add more Card widgets
                     // Add more Card widgets similarly
                   ],
-
-
-
                 ),
               ),
             )

@@ -9,3 +9,10 @@ TextStyle text = GoogleFonts.poppins(
 
     TextStyle detail = GoogleFonts.poppins(
     textStyle: const TextStyle(color: Colors.black, fontSize: 10,));
+
+    const SizedBox box = SizedBox(
+  height: 10,
+);
+ const SizedBox boxw = SizedBox(
+  width: 10,
+);
