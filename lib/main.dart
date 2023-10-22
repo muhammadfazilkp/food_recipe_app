@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import 'view/screens/splash_Screen/spalash_screen.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -16,19 +15,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=>  GetRecipeProvider()  ),
+        ChangeNotifierProvider(create: (context) => GetRecipeProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-        
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const SplashScreen() ,
+        home: const SplashScreen(),
       ),
     );
   }
 }
-

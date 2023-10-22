@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe_app/controller/recipe/recipe_provider.dart';
 import 'package:food_recipe_app/view/screens/home_screen/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<GetRecipeProvider>(context, listen: false).fetchRecipes();
     return Scaffold(
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/pizza-toppings-pile-composition_1284-26412.jpg'))
-        ),
+            image: DecorationImage(
+                image: AssetImage(
+                    'assets/pizza-toppings-pile-composition_1284-26412.jpg'))),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -38,7 +42,8 @@ class SplashScreen extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>  HomeScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => HomeScreen()));
                     },
                     style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
