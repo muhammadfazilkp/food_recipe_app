@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:food_recipe_app/controller/custome_provider/custom.dart';
 import 'package:food_recipe_app/controller/recipe/recipe_provider.dart';
@@ -19,10 +21,16 @@ class FoodDitailsAddingScreen extends StatelessWidget {
               key: formkey,
               child: Column(
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      radius: 68,
+                    child: Consumer<CustomFieldProvider>(
+                      builder: (context, value, child) => CircleAvatar(
+                        radius: 68,
+                        backgroundImage: value.profileImage != null
+                            ? FileImage(File(value.profileImage!.path))
+                            : const AssetImage('assets/profile.jpg')
+                                as ImageProvider,
+                      ),
                     ),
                   ),
                   TextButton(
@@ -31,7 +39,7 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                             .getphoto();
                       },
                       child: Text(
-                        'select image',
+                        'select dish image',
                         style: text,
                       )),
                   Column(
