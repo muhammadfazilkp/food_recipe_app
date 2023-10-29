@@ -52,7 +52,6 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Container(
-                          
                           height: 30,
                           width: 120,
                           // ignore: sort_child_properties_last
@@ -62,10 +61,9 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                                 border: InputBorder.none,
                                 hintText: ' Entertheingredients'),
                           ),
-                           decoration: BoxDecoration(
+                          decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: Colors.black45)),
-
                         ),
                         IconButton(
                             onPressed: () {

@@ -10,6 +10,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<GetRecipeProvider>(context, listen: false).fetchRecipes();
+    navigator(context);
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -35,29 +36,35 @@ class SplashScreen extends StatelessWidget {
                     fontSize: 22, fontWeight: FontWeight.w700),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(5, 0, 5, 75),
-              child: SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
-                    },
-                    style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          Color.fromARGB(255, 208, 72, 63)),
-                    ),
-                    child: Text(
-                      'Let it GO',
-                      style: GoogleFonts.poppins(color: Colors.white),
-                    )),
-              ),
-            )
+            // Padding(
+            //   padding: const EdgeInsets.fromLTRB(5, 0, 5, 75),
+            //   child: SizedBox(
+            //     width: double.infinity,
+            //     height: 50,
+            //     child: ElevatedButton(
+            //         onPressed: () {
+            //           Navigator.of(context).push(MaterialPageRoute(
+            //               builder: (context) => HomeScreen()));
+            //         },
+            //         style: const ButtonStyle(
+            //           backgroundColor: MaterialStatePropertyAll(
+            //               Color.fromARGB(255, 208, 72, 63)),
+            //         ),
+            //         child: Text(
+            //           'Let it GO',
+            //           style: GoogleFonts.poppins(color: Colors.white),
+            //         )),
+            //   ),
+            // )
           ],
         ),
       ),
     );
+  }
+
+  Future<void> navigator(BuildContext context) async {
+    await Future.delayed(const Duration(seconds: 3)).then((value) =>
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HomeScreen())));
   }
 }
