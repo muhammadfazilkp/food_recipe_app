@@ -4,7 +4,8 @@ import 'package:food_recipe_app/model/recipe.dart';
 import 'package:http/http.dart' as http;
 
 class GetRecipeProvider extends ChangeNotifier {
-  List<FoodRecipe> recipes = []; // List to store multiple FoodRecipe objects
+  List<FoodRecipe> recipes = [];
+  // List to store multiple FoodRecipe objects
 
   Future<void> fetchRecipes() async {
     final response = await http.get(Uri.parse(
@@ -13,7 +14,6 @@ class GetRecipeProvider extends ChangeNotifier {
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = json.decode(response.body);
 
-      // Convert the list of JSON objects to a list of FoodRecipe objects
       recipes =
           jsonList.map((jsonMap) => FoodRecipe.fromJson(jsonMap)).toList();
       notifyListeners();
@@ -23,31 +23,41 @@ class GetRecipeProvider extends ChangeNotifier {
     }
   }
 
-  postRecipes(Map<String, dynamic> post) async {
-    final body = jsonEncode({
+  Future<void> postRecipes(Map<String, dynamic> post) async {
+    final Map<String, dynamic> body = {
       "foodName": post['foodName'],
       'description': post['description'],
-      'photo': post['photo'],
-      'foodIngredients': post['foodIngredients'],
+      'photo': "path/to/photo.jpg",
+      'foodIncrediance': post['foodIngredients'],
       'steps': post['steps'],
       'level': post['level'],
-      'timeRequired': post['level'],
+      'timeRequired': post['timeRequired'],
       'calories': post['calories']
-    });
-    final response = await http.post(
-        Uri.parse(
-            'https://food-maker-rcd0rv1d8-arjun2628s-projects.vercel.app/addfood'),
-        body: body);
-    if (response.statusCode == 200) {
-      final List<dynamic> jsonList = json.decode(response.body);
+    };
 
-      // Convert the list of JSON objects to a list of FoodRecipe objects
-      recipes =
-          jsonList.map((jsonMap) => FoodRecipe.fromJson(jsonMap)).toList();
-      notifyListeners();
-    } else {
-      // Handle the error case
-      throw Exception('Failed to load data');
-    }
+    final bodyJson = jsonEncode(body);
+
+    try {
+      final response = await http.post(
+        Uri.parse(
+            "https://food-maker-rcd0rv1d8-arjun2628s-projects.vercel.app/addfood"),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: bodyJson,
+      );
+
+      if (response.statusCode == 200) {
+        
+        // ...
+        final List<dynamic> jsonList = json.decode(response.body);
+
+        recipes =
+            jsonList.map((jsonMap) => FoodRecipe.fromJson(jsonMap)).toList();
+        notifyListeners();
+      } else {
+        print("error");
+      }
+    } catch (error) {}
   }
 }

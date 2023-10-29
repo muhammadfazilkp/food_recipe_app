@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe_app/controller/recipe/recipe_provider.dart';
 import 'package:food_recipe_app/core/text_style.dart';
+import 'package:food_recipe_app/view/screens/adding_screen/food_details.dart';
 import 'package:food_recipe_app/view/screens/dish_view_page/view_page.dart';
 import 'package:food_recipe_app/view/screens/home_screen/widget/categori.dart';
 import 'package:provider/provider.dart';
@@ -15,8 +16,6 @@ class HomeScreen extends StatelessWidget {
     "Drinks",
     "Vegetarian"
   ];
-
-  // final List<Recipe> recipes; // Pass the recipes as a parameter
 
   HomeScreen({Key? key}) : super(key: key);
 
@@ -67,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  const DishViewPage()),
+                              builder: (context) => FoodDitailsAddingScreen()),
                         ),
                         child: Card(
                           child: SingleChildScrollView(
@@ -84,24 +83,28 @@ class HomeScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      data.foodName,
-                                      style: categori,
-                                    ),
-                                    Text(
-                                      data.timeRequired,
-                                      style: detail,
-                                    ),
-                                    Text(
-                                      data.level,
-                                      style: detail,
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                  ],
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        data.foodName,
+                                        style: categori,
+                                      ),
+                                      Text(
+                                        data.description,
+                                        style: detail,
+                                      ),
+                                      Text(
+                                        data.level,
+                                        style: detail,
+                                      ),
+                                      Text(data.timeRequired),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),

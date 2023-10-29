@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe_app/controller/custome_provider/custom.dart';
 import 'package:food_recipe_app/controller/recipe/recipe_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => GetRecipeProvider()),
+        ChangeNotifierProvider(create: (context)=> CustomFieldProvider())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
