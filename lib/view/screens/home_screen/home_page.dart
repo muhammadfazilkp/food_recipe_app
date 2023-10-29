@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_recipe_app/controller/recipe/recipe_provider.dart';
 import 'package:food_recipe_app/core/text_style.dart';
 import 'package:food_recipe_app/view/screens/adding_screen/food_details.dart';
+import 'package:food_recipe_app/view/screens/home_screen/widget/alertdylog.dart';
 import 'package:food_recipe_app/view/screens/home_screen/widget/categori.dart';
 import 'package:provider/provider.dart';
 
@@ -61,7 +62,16 @@ class HomeScreen extends StatelessWidget {
                     itemCount: value.recipes.length,
                     itemBuilder: (context, index) {
                       final data = value.recipes[index];
+
                       return InkWell(
+                        onLongPress: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return DeleteDialogPage(data.id);
+                            },
+                          );
+                        },
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(

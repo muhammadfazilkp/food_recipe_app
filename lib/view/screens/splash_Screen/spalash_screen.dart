@@ -36,26 +36,6 @@ class SplashScreen extends StatelessWidget {
                     fontSize: 22, fontWeight: FontWeight.w700),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.fromLTRB(5, 0, 5, 75),
-            //   child: SizedBox(
-            //     width: double.infinity,
-            //     height: 50,
-            //     child: ElevatedButton(
-            //         onPressed: () {
-            //           Navigator.of(context).push(MaterialPageRoute(
-            //               builder: (context) => HomeScreen()));
-            //         },
-            //         style: const ButtonStyle(
-            //           backgroundColor: MaterialStatePropertyAll(
-            //               Color.fromARGB(255, 208, 72, 63)),
-            //         ),
-            //         child: Text(
-            //           'Let it GO',
-            //           style: GoogleFonts.poppins(color: Colors.white),
-            //         )),
-            //   ),
-            // )
           ],
         ),
       ),

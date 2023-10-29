@@ -26,7 +26,10 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Provider.of<CustomFieldProvider>(context, listen: false)
+                            .getphoto();
+                      },
                       child: Text(
                         'select image',
                         style: text,

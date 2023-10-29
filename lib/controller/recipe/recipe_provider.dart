@@ -48,8 +48,9 @@ class GetRecipeProvider extends ChangeNotifier {
       );
 
       if (response.statusCode == 200) {
-        
         // ...
+        //decoding to the list after can see the users in ui
+
         final List<dynamic> jsonList = json.decode(response.body);
 
         recipes =
@@ -59,5 +60,29 @@ class GetRecipeProvider extends ChangeNotifier {
         print("error");
       }
     } catch (error) {}
+  }
+
+  Future<void> deleteFood(String foodId) async {
+    try {
+      final response = await http.delete(
+        Uri.parse('https://food-maker-psi.vercel.app/deletefood/$foodId'),
+        // You can also pass any necessary headers or data here if needed
+      );
+
+      if (response.statusCode == 200) {
+        print('Deletion was successful');
+        final List<dynamic> jsonList = json.decode(response.body);
+
+        recipes =
+            jsonList.map((jsonMap) => FoodRecipe.fromJson(jsonMap)).toList();
+        notifyListeners();
+      } else {
+        // Handle the case where the server returns an error
+        print('Failed to delete. Status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Handle exceptions or network issues
+      print('Exception during deletion: $e');
+    }
   }
 }
