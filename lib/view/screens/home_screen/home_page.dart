@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food_recipe_app/controller/recipe/recipe_provider.dart';
 import 'package:food_recipe_app/core/text_style.dart';
 import 'package:food_recipe_app/view/screens/adding_screen/food_details.dart';
-import 'package:food_recipe_app/view/screens/dish_view_page/view_page.dart';
 import 'package:food_recipe_app/view/screens/home_screen/widget/categori.dart';
 import 'package:provider/provider.dart';
 

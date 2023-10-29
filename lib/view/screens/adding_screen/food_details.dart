@@ -52,12 +52,20 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Container(
-                          color: Colors.grey,
+                          
                           height: 30,
                           width: 120,
+                          // ignore: sort_child_properties_last
                           child: TextFormField(
                             controller: value.foodIngrediants,
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                hintText: ' Entertheingredients'),
                           ),
+                           decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(color: Colors.black45)),
+
                         ),
                         IconButton(
                             onPressed: () {
@@ -68,7 +76,7 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
@@ -77,19 +85,33 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black45),
                         ),
+                        child: ListView.builder(
+                          itemCount: value.ingreadience.length,
+                          itemBuilder: (context, index) {
+                            return Text(
+                              " ${value.ingreadience[index]}",
+                              style: categori,
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Container(
-                          color: Colors.grey,
                           height: 30,
                           width: 120,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(color: Colors.black45)),
                           child: TextFormField(
                             controller: value.steps,
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'EntertheSteps'),
                           ),
                         ),
                       ),
@@ -107,6 +129,15 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black45),
+                      ),
+                      child: ListView.builder(
+                        itemCount: value.step.length,
+                        itemBuilder: (context, index) {
+                          return Text(
+                            value.step[index],
+                            style: categori,
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -128,9 +159,9 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                             Navigator.pop(context);
                           }
                         },
-                        style:  ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll(Colors.pinkAccent[200])),
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                                Colors.pinkAccent[200])),
                         child: SizedBox(
                             width: double.infinity,
                             height: 30,
