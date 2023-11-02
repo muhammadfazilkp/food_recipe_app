@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipe_app/core/text_style.dart';
+import 'package:food_recipe_app/model/recipe.dart';
 
 class DishViewPage extends StatelessWidget {
+  final FoodRecipe recipe;
   // ignore: use_key_in_widget_constructors
-  const DishViewPage({Key? key});
+
+  const DishViewPage({Key? key, required this.recipe}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +33,10 @@ class DishViewPage extends StatelessWidget {
                   left: paddingGap,
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.deepPurple,
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            image: NetworkImage(recipe.photo),
+                            fit: BoxFit.cover)),
                     height: 150,
                     width: 150,
                   ),
@@ -43,12 +47,15 @@ class DishViewPage extends StatelessWidget {
         ),
         box,
         Text(
-          'Hot Dog |4.6',
+          recipe.foodName,
           style: text,
         ),
-        Text(
-          'A classic American favorite,HotDogalasndlfkasjdflkjasldkasjlkajdksjfkasjf;asfjasj',
-          style: detail,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            recipe.description,
+            style: detail,
+          ),
         ),
         box,
         Row(
@@ -60,8 +67,12 @@ class DishViewPage extends StatelessWidget {
               decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 206, 138, 153),
                   borderRadius: BorderRadius.circular(10)),
-              child: const Column(
-                children: [box, Icon(CupertinoIcons.time), Text('40 Mins')],
+              child: Column(
+                children: [
+                  box,
+                  const Icon(CupertinoIcons.time),
+                  Text(recipe.timeRequired)
+                ],
               ),
             ),
             boxw,
@@ -71,8 +82,12 @@ class DishViewPage extends StatelessWidget {
               decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 128, 137, 201),
                   borderRadius: BorderRadius.circular(10)),
-              child: const Column(
-                children: [box, Icon(CupertinoIcons.delete), Text('Medium')],
+              child: Column(
+                children: [
+                  box,
+                  const Icon(CupertinoIcons.pano),
+                  Text(recipe.level)
+                ],
               ),
             ),
             boxw,
@@ -82,8 +97,12 @@ class DishViewPage extends StatelessWidget {
               decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 224, 223, 162),
                   borderRadius: BorderRadius.circular(10)),
-              child: const Column(
-                children: [box, Icon(CupertinoIcons.flame), Text('420 cal')],
+              child: Column(
+                children: [
+                  box,
+                  const Icon(CupertinoIcons.flame),
+                  Text('calories${recipe.calories}')
+                ],
               ),
             ),
           ],
@@ -99,74 +118,52 @@ class DishViewPage extends StatelessWidget {
               ),
             )),
         box,
-        Padding(
-          padding: const EdgeInsets.only(left: 12),
-          child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '. Hot Dog Buns',
-                style: detail,
-              )),
-        ),
-        box,
-        Padding(
-          padding: const EdgeInsets.only(left: 12),
-          child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '. Hot Dog Buns',
-                style: detail,
-              )),
-        ),
-        box,
-        Padding(
-          padding: const EdgeInsets.only(left: 12),
-          child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '. Hot Dog Buns',
-                style: detail,
-              )),
-        ),
-        box,
-        Padding(
-          padding: const EdgeInsets.only(left: 12),
-          child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '. Hot Dog Buns',
-                style: detail,
-              )),
-        ),
+        ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: recipe.foodIngredients.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      recipe.foodIngredients[index],
+                      style: detail,
+                    )),
+              );
+            }),
         box,
         Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                'Steps',
-                style: text,
-              ),
-            )),
-        Padding(
-          padding: const EdgeInsets.all(7.0),
-          child: Column(
-            children: [
-              Text(
-                '1) akasjdfkasjdfkasjdfkdsjfdjkfhdsjfhdhfjdhkjhjkvkjvbksjdvkjdkjfjkdkjfkjdshfkjdsh/nsdfhihisuhfdishishf',
-                style: detail,
-              ),
-              Text(
-                '2) akasjdfkasjdfkasjdfkdsjfdjkfhdsjfhdhfjdhkjhjkvkjvbksjdvkjdkjfjkdkjfkjdshfkjdsh/nsdfhihisuhfdishishf',
-                style: detail,
-              ),
-              Text(
-                '3) akasjdfkasjdfkasjdfkdsjfdjkfhdsjfhdhfjdhkjhjkvkjvbksjdvkjdkjfjkdkjfkjdshfkjdsh/nsdfhihisuhfdishishf',
-                style: detail,
-              ),
-            ],
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: Text(
+              'Steps',
+              style: text,
+            ),
           ),
-        )
+        ),
+        ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: recipe.steps.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(7.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    children: [
+                      Text(
+                        '.)${recipe.steps[index]}',
+                        style: detail,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            })
       ],
     ));
   }

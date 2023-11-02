@@ -22,7 +22,7 @@ class FoodDitailsAddingScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Consumer<CustomFieldProvider>(
                       builder: (context, value, child) => CircleAvatar(
                         radius: 68,
@@ -179,7 +179,8 @@ class FoodDitailsAddingScreen extends StatelessWidget {
                               'Submit',
                               style: text,
                             )))),
-                  )
+                  ),
+                  box,
                 ],
               ),
             ),

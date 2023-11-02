@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_recipe_app/controller/recipe/recipe_provider.dart';
 import 'package:food_recipe_app/core/text_style.dart';
 import 'package:food_recipe_app/view/screens/adding_screen/food_details.dart';
+import 'package:food_recipe_app/view/screens/dish_view_page/view_page.dart';
 import 'package:food_recipe_app/view/screens/home_screen/widget/alertdylog.dart';
 import 'package:food_recipe_app/view/screens/home_screen/widget/categori.dart';
 import 'package:provider/provider.dart';
@@ -29,15 +30,24 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.shade600,
+                          offset: const Offset(4, 4),
+                          blurRadius: 10,
+                          spreadRadius: 0),
+                    ]),
                 width: double.infinity,
                 height: 50,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     decoration: const InputDecoration(
-                        border: InputBorder.none, hintText: 'Search Recipe...'),
+                      border: InputBorder.none,
+                      hintText: 'Search Recipe...',
+                    ),
                   ),
                 ),
               ),
@@ -45,11 +55,12 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Categories',
-                    style: detail,
-                  )),
+                alignment: Alignment.topLeft,
+                child: Text(
+                  'Categories',
+                  style: detail,
+                ),
+              ),
             ),
             CategoriWidget(
               categories: categories,
@@ -75,7 +86,8 @@ class HomeScreen extends StatelessWidget {
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => FoodDitailsAddingScreen()),
+                            builder: (context) =>   DishViewPage( recipe: data),
+                          ),
                         ),
                         child: Card(
                           child: SingleChildScrollView(
@@ -92,9 +104,11 @@ class HomeScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         data.foodName,
@@ -108,7 +122,10 @@ class HomeScreen extends StatelessWidget {
                                         data.level,
                                         style: detail,
                                       ),
-                                      Text(data.timeRequired),
+                                      Text(
+                                        data.timeRequired,
+                                        style: detail,
+                                      ),
                                       const SizedBox(
                                         height: 5,
                                       ),
@@ -124,7 +141,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
